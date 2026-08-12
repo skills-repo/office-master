@@ -8,7 +8,7 @@
 
 - `SKILL.md` — L1 路由层，只做能力索引，不写方法论
 - `references/` — L2 深层 playbook（Office↔MD 往返、演示设计系统、样式门禁）
-- `skills/` — L3 四个细粒度子技能，可单独安装
+- `skills/` — L3 五个细粒度子技能，可单独安装
 - `scripts/` — L4 确定性文档检查脚本（标题层级、演示大纲）
 - `assets/` — L5 可复用规范与模板（样式规则、brief 模板）
 
@@ -32,6 +32,7 @@
 | 📤 格式转换 | `md-to-office` | Markdown 转 Word/PPT/PDF，Pandoc 驱动的专业文档生成 | [衍生](https://skills.sh/claude-office-skills/skills/md-to-office) |
 | 🎨 演示设计 | `presentation-designer` | 专业演示设计：5 套品牌风格、排版体系、动画指南、一致性验证 | [衍生](https://skills.sh/willem4130/claude-code-skills/elite-powerpoint-designer) |
 | 🤖 PPT 自动化 | `ppt-automation` | PowerPoint 编程操作：python-pptx 创建/修改/提取，模板驱动 | [衍生](https://skills.sh/practicalswan/agent-skills/powerpoint-ppt) |
+| 🧠 上下文记忆 | `office-context` | 办公品牌/模板上下文记忆：捕获并复用品牌色板与版式骨架，让多次产出统一 | [原创](https://github.com/skills-repo/office-master) |
 
 ## 安装
 
@@ -48,6 +49,7 @@ npx skills add skills-repo/office-master@office-to-md -g -y
 npx skills add skills-repo/office-master@md-to-office -g -y
 npx skills add skills-repo/office-master@presentation-designer -g -y
 npx skills add skills-repo/office-master@ppt-automation -g -y
+npx skills add skills-repo/office-master@office-context -g -y
 ```
 
 ## 内置脚本

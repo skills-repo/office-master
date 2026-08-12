@@ -1,8 +1,8 @@
 ---
 name: office-master
 description: >-
-  办公效率技能库：覆盖 Office/PDF 与 Markdown 双向转换、专业演示设计与 PPT 编程自动化四大能力，并附文档样式与演示大纲的确定性检查脚本。
-  当用户说"Word 转 Markdown"、"Markdown 转 PPT"、"文档转换"、"演示设计"、"PPT 自动化"、"样式检查"时触发。
+  办公效率技能库：覆盖 Office/PDF 与 Markdown 双向转换、专业演示设计与 PPT 编程自动化四大能力，并附文档样式与演示大纲的确定性检查脚本；另提供办公品牌与模板上下文记忆，让多次产出保持统一版式。
+  当用户说"Word 转 Markdown"、"Markdown 转 PPT"、"文档转换"、"演示设计"、"PPT 自动化"、"样式检查"、"记住品牌与模板偏好"、"办公上下文"时触发。
 agent_created: true
 metadata:
   version: 1.0.0
@@ -25,6 +25,7 @@ metadata:
 - 需要 python-pptx 编程批量操作 .pptx（创建/改/提取）时
 - 想自动校验文档标题层级、演示大纲结构（CI 门禁）时
 - 团队要统一 Office 文档与演示的交付规范时
+- 需要让多次文档 / PPT 产出保持统一品牌与版式时
 
 ## 能力索引（超级技能路由）
 
@@ -37,6 +38,7 @@ metadata:
 | Markdown 转 Office（细粒度调用） | `skills/md-to-office/SKILL.md` | md-to-office pandoc Word PPT PDF |
 | 专业演示设计（细粒度调用） | `skills/presentation-designer/SKILL.md` | presentation-designer 品牌 排版 动画 |
 | PPT 编程自动化（细粒度调用） | `skills/ppt-automation/SKILL.md` | ppt-automation python-pptx 幻灯片 模板 |
+| 办公品牌/模板上下文记忆、跨会话复用品牌色板与版式骨架 | `skills/office-context/SKILL.md` + `references/office-context-playbook.md` | 上下文 记忆 品牌 模板 office-context 偏好 复用 版式 |
 
 ## 内置脚本（确定性、可重复执行）
 
@@ -73,4 +75,5 @@ python3 scripts/check_ppt_brief.py assets/presentation-brief-template.md   # 查
 
 - 技术文档生成 → `skills-repo/docs-writer`
 - 提交/版本规范 → `skills-repo/productivity-master`
-- 本仓库所有子技能来源见各自 `source` 字段，均为 skills.sh 社区成熟技能衍生
+- 跨会话个人知识 / 第二大脑记忆 → `skills-repo/productivity-master` 的 `memory-keeper`（与本仓库 `office-context` 正交：前者管知识，本技能只管办公交付物的品牌与版式上下文）
+- 本仓库所有子技能来源见各自 `source` 字段，均为 skills.sh 社区成熟技能衍生（仅 `office-context` 为原创，见其字段）
