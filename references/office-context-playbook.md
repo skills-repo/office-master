@@ -35,6 +35,8 @@
 
 ## 3. 上下文文件 schema（`assets/office-context.json`）
 
+> 直接复制 `assets/office-context.example.json` 作为起点，再填入你的品牌值，命名为 `assets/office-context.json`。
+
 ```json
 {
   "brand": {

@@ -61,6 +61,7 @@ python3 scripts/check_ppt_brief.py assets/presentation-brief-template.md   # 查
 
 - `assets/doc-style-rules.json` — 样式/大纲检查规则（单一 H1、深度、必检 token、页数等）
 - `assets/presentation-brief-template.md` — 演示大纲标准模板（层级/结构均合规的范本）
+- `assets/office-context.example.json` — 办公上下文示例（品牌五件套 + 模板路径范本，复制改 `assets/office-context.json`）
 
 ## 核心原则（始终遵循）
 
