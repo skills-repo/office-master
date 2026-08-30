@@ -175,3 +175,26 @@ python-pptx 落地时读这份 token 设颜色/字体，保证「改一处全篇
 
 打开成稿，快速过三问：① 每页一眼能看懂在讲什么？② 字体/颜色从头到尾一致？③ 动画不抢戏（≤3/页）？
 三问全过 → 可交付；任一不过 → 回模板/版式改，重生成。别在放映前夜手调 20 页——那是灾难源头。
+
+## 16. 相关子技能与层次边界（L2→L3）
+
+本篇是 **L2 决策层**：只解决「选哪套风格 / 每页用哪种版式 / 一致性怎么机器化验 / 交付格式怎么选」。
+落地 API 与逐步操作由 L3 子技能承担，不在本篇复制：
+
+| 你要做的事 | 去 L3 子技能 | 本篇只负责 |
+|-----------|-------------|-----------|
+| 具体的品牌风格套用与设计执行 | `skills/presentation-designer/SKILL.md` | 风格选型决策树与硬规则 |
+| python-pptx 创建 / 修改 / 提取幻灯片 | `skills/ppt-automation/SKILL.md` | 只给落地要点，不列 API 签名 |
+| 从 Markdown 生成 .pptx 的初始骨架 | `skills/md-to-office/SKILL.md` | 交接「结构已分页」 |
+| 从既有 .pptx 抽取文本做复用 | `skills/office-to-md/SKILL.md` | 不涉及抽取参数 |
+| 品牌五件套跨会话复用 | `skills/office-context/SKILL.md` | 不存储品牌状态 |
+
+同层 references（平级 L2，互不复制）：
+
+- 上游结构就绪与往返失真 → `references/office-md-roundtrip.md`（其第 12 节是本篇的入口）
+- brief / 大纲进 CI 的门禁方法论 → `references/doc-style-quality-gates.md`（本篇第 9 节只引用命令）
+- 品牌色板与模板路径的约定文件 → `references/office-context-playbook.md`
+
+配套确定性工具：`scripts/check_ppt_brief.py`（大纲结构）+ `assets/presentation-brief-template.md`（合规范本）。
+
+边界一句话：**本篇决定「长什么样、怎么验一致」，L3 决定「怎么把它做出来」。**

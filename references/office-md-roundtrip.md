@@ -175,3 +175,24 @@ pandoc product.md -o dist/product.docx --reference-doc=brand.docx
 - 扫描件 PDF：无文本层，markitdown 取不到 → 先 OCR 再决定。
 
 识别「该转」与「不该转」比会转更重要；强行转换只会产出难维护的半成品。
+
+## 15. 相关子技能与层次边界（L2→L3）
+
+本篇是 **L2 决策层**：只解决「往哪转 / 用什么工具 / 怎么不失真 / 何时不该转」。
+具体命令语法与参数细节由 L3 子技能承担，不在本篇复制：
+
+| 你要做的事 | 去 L3 子技能 | 本篇只负责 |
+|-----------|-------------|-----------|
+| Office/PDF → Markdown 的实际调用 | `skills/office-to-md/SKILL.md` | 判断该不该转、失真预期 |
+| Markdown → Word/PPT/PDF 的实际调用 | `skills/md-to-office/SKILL.md` | 选模板策略、源真相方向 |
+| 转成 PPT 后的版式与品牌设计 | `skills/presentation-designer/SKILL.md` | 只交接「结构已就绪」 |
+| .pptx 的编程批量改写 | `skills/ppt-automation/SKILL.md` | 不涉及 python-pptx API |
+| 品牌 / 模板跨会话复用 | `skills/office-context/SKILL.md` | 不存储品牌状态 |
+
+同层 references（平级 L2，互不复制）：
+
+- 转换前的结构门禁方法论 → `references/doc-style-quality-gates.md`（本篇第 3、9 节只引用其命令，规则演进见该篇）
+- 转成演示后的设计系统 → `references/presentation-design-system.md`（本篇第 12 节交接点的下游）
+- 品牌 / 模板上下文的落地约定 → `references/office-context-playbook.md`
+
+边界一句话：**本篇决定「转不转、往哪转」，L3 决定「怎么敲命令」，兄弟 L2 决定「转之前卡什么、转之后怎么设计」。**

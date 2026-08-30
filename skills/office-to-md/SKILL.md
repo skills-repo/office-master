@@ -59,3 +59,12 @@ metadata:
 - 图片不嵌入，仅通过 Vision 模型生成描述文本
 - Word 修订痕迹和批注不会保留
 - 部分表格结构转换后需手动调整
+
+## 相关参考（Playbook）
+
+- 该不该转、往哪转、往返失真与「何时不该转」的决策 → `references/office-md-roundtrip.md`
+- 转出的 Markdown 是否结构合法（标题层级/单一 H1）→ `references/doc-style-quality-gates.md` + `scripts/check_doc_style.py`
+- 抽取出的内容要做成演示 → `references/presentation-design-system.md`
+- 兄弟子技能：反向生成 `skills/md-to-office`
+
+> 本技能只负责**怎么转**（命令与参数）；转不转、失真容忍度、批量策略在上述 `references/` 中决策。

@@ -185,3 +185,26 @@ jobs:
 写任何要被转换或分页的 Markdown，记住三条：① 只有一个最高级标题；② 标题一级一级往下，不跳；
 ③ 写之前就把 `title` 放进 frontmatter。做到这三条，`check_doc_style` 几乎永远一次过，
 后面的转换与分页自然稳。门禁不是负担，是让你少返工的习惯。
+
+## 16. 相关子技能与层次边界（L2→L3）
+
+本篇是 **L2 决策层**：只解决「要不要过门禁 / 卡哪些规则 / 阈值怎么调 / 怎么进 CI」。
+门禁通过之后的转换与设计动作由 L3 子技能承担，不在本篇复制：
+
+| 你要做的事 | 去 L3 子技能 | 本篇只负责 |
+|-----------|-------------|-----------|
+| 门禁过了之后转 Word/PPT/PDF | `skills/md-to-office/SKILL.md` | 只保证源结构合法 |
+| 把 Office 转成 MD 后再过门禁 | `skills/office-to-md/SKILL.md` | 只定义合法标准 |
+| 演示大纲通过后的设计执行 | `skills/presentation-designer/SKILL.md` | 只卡结构不管美观 |
+| 用 python-pptx 批改幻灯片 | `skills/ppt-automation/SKILL.md` | 不涉及 pptx 编程 |
+| 门禁规则里的品牌 / 模板项来源 | `skills/office-context/SKILL.md` | 不存储品牌状态 |
+
+同层 references（平级 L2，互不复制）：
+
+- 门禁在转换流水线中的位置 → `references/office-md-roundtrip.md`（其第 3、9 节调用本篇命令）
+- 演示侧的 brief 门禁与设计规则 → `references/presentation-design-system.md`（其第 9 节调用本篇命令）
+- 品牌 / 模板上下文与规则文件的关系 → `references/office-context-playbook.md`
+
+配套确定性工具：`scripts/check_doc_style.py` + `scripts/check_ppt_brief.py`，规则单一事实来源为 `assets/doc-style-rules.json`。
+
+边界一句话：**本篇决定「卡什么、卡多严」，脚本负责机械执行，L3 负责门禁之后的产出动作。**

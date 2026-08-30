@@ -58,3 +58,12 @@ metadata:
 - 动画效果在不同平台兼容性不一（建议预览确认）
 - 复杂数据图表建议先单独制作再嵌入
 - 最终效果依赖于 python-pptx 对动画和渐变的支持程度
+
+## 相关参考（Playbook）
+
+- 选哪套品牌风格、每页用哪种版式、排版硬规则与一致性验证 → `references/presentation-design-system.md`
+- 演示大纲结构门禁（页数/标题长度/重复）→ `scripts/check_ppt_brief.py` + `assets/presentation-brief-template.md`
+- 上游 Markdown 如何分页成 .pptx 骨架 → `references/office-md-roundtrip.md`
+- 品牌五件套跨会话复用 → `skills/office-context/SKILL.md`
+
+> 本技能只负责**怎么设计出来**；风格选型、版式矩阵、交付格式兼容性在上述 `references/` 中决策。
