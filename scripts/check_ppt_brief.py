@@ -7,6 +7,10 @@
 约定：Markdown brief 中 H1 为标题，每个 H2 为一页幻灯片；校验页数、页标题长度、
 重复标题、单页正文长度、frontmatter 的 title 键。
 
+作用域约定（重要）：围栏代码块（``` 或 ~~~）内部不参与分页——代码块里的 `## step`
+是 shell 注释，不是幻灯片页。缺这一步会让页数静默虚增（3 页 brief 被数成 5 页且仍
+落在 min/max 区间内、门禁静默通过），下游按 H2 分页的转换随之产出错误页数。
+
 用法:
   python3 scripts/check_ppt_brief.py --help
   python3 scripts/check_ppt_brief.py --check-rules            # 自检规则文件（必须 0 错误）
@@ -23,6 +27,28 @@ import sys
 DEFAULT_RULES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "doc-style-rules.json")
 
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*#*$")
+# 围栏：``` 或 ~~~ 起，允许最多 3 个前导空格。别写 r"^```{3,}"——{3,} 只作用于第 3 个反引号，
+# 会变成「要求 ≥5 个反引号」，普通围栏匹配不上、剥离静默失效。
+FENCE_RE = re.compile(r"^ {0,3}(`{3,}|~{3,})")
+
+
+def iter_prose_lines(text):
+    """逐行产出原始行，跳过围栏代码块内部与围栏行本身（闭合须同字符且不短于开启）。"""
+    fence_char, fence_len = None, 0
+    for line in text.split("\n"):
+        m = FENCE_RE.match(line)
+        if m:
+            marker = m.group(1)
+            ch, ln = marker[0], len(marker)
+            if fence_char is None:
+                fence_char, fence_len = ch, ln
+                continue
+            if ch == fence_char and ln >= fence_len:
+                fence_char, fence_len = None, 0
+                continue
+        if fence_char is not None:
+            continue
+        yield line
 
 
 def load_rules(path):
@@ -66,12 +92,22 @@ def parse_brief(path):
             m = re.search(r"title:\s*(.+)", block)
             if m:
                 title = m.group(1).strip().strip("\"'")
-    # 按 H2 切分幻灯片
-    lines = text.split("\n")
+    # 按 H2 切分幻灯片。围栏代码块内的 ## 是注释、不切页，但其正文仍计入当页篇幅
+    # （幻灯片上代码块确实占版面，故只跳过「切页判定」，不跳过 body 累积）。
     slides = []
     cur = None
-    for line in lines:
-        m = HEADING_RE.match(line)
+    fence_char, fence_len = None, 0
+    for line in text.split("\n"):
+        fm = FENCE_RE.match(line)
+        in_fence_before = fence_char is not None
+        if fm:
+            marker = fm.group(1)
+            ch, ln = marker[0], len(marker)
+            if fence_char is None:
+                fence_char, fence_len = ch, ln
+            elif ch == fence_char and ln >= fence_len:
+                fence_char, fence_len = None, 0
+        m = None if (in_fence_before or fm) else HEADING_RE.match(line)
         if m and len(m.group(1)) == 2:
             if cur is not None:
                 slides.append(cur)

@@ -47,13 +47,19 @@ metadata:
 - `scripts/check_doc_style.py` — 校验 Markdown 标题层级一致性（单一 H1、不跳级、重复 slug、frontmatter、残留 token）
 - `scripts/check_ppt_brief.py` — 校验演示大纲结构（页数、页标题长度、重复、正文长度）
 
+两者均剥离围栏代码块：块内 `#` / `##` 是注释，不当标题、不当幻灯片页、不算残留 token。
+
 运行示例：
 
 ```bash
 python3 scripts/check_doc_style.py --check-rules            # 自检规则（0 错误）
-python3 scripts/check_doc_style.py docs/ README.md          # 查标题层级
+python3 scripts/check_doc_style.py docs/ README.md          # 查标题层级（对稿件跑）
 python3 scripts/check_ppt_brief.py assets/presentation-brief-template.md   # 查大纲
 ```
+
+> 作用域：只对**交付稿件**（要转 Word/PPT/PDF 的 .md）跑。别对含 `SKILL.md` 的技能仓库根
+> 递归跑——`SKILL.md` 用 `name`/`description`/`metadata`，没有 `title` 键，会刷出无关误报。
+> 判断依据与踩坑见 `references/doc-style-quality-gates.md` 第 3、6 节。
 
 ## 模板资源
 

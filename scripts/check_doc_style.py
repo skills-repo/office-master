@@ -6,11 +6,18 @@
 
 校验项：单一 H1、标题层级不跳级、最大深度、重复标题 slug、必需 frontmatter 键、残留 token。
 
+作用域约定（重要）：
+  - 围栏代码块（``` 或 ~~~，含缩进不超过 3 空格）内部一律不参与任何校验。
+    代码块里的 `# comment` / `## step` 是注释，不是标题；示例代码里的 TODO 是示例，不是交付物残留。
+  - 残留 token 检测会剥离行内代码（`TODO` 这种反引号包裹的写法视为「在讲这个 token」而非残留）。
+  - 本脚本校验的是**交付稿件**（要转 Word/PPT/PDF 的 .md），required_frontmatter_keys 按稿件规范配置。
+    不要对含 SKILL.md 的技能仓库根目录递归跑——SKILL.md 用 name/description/metadata，天然无 title 键。
+
 用法:
   python3 scripts/check_doc_style.py --help
   python3 scripts/check_doc_style.py --check-rules            # 自检规则文件（必须 0 错误）
   python3 scripts/check_doc_style.py docs/outline.md          # 校验单文件
-  python3 scripts/check_doc_style.py docs/                    # 递归校验目录
+  python3 scripts/check_doc_style.py docs/                    # 递归校验稿件目录
 
 退出码: 0 = 全部合规 / 1 = 发现样式问题 / 2 = 规则文件无法解析。
 """
@@ -23,7 +30,34 @@ import sys
 DEFAULT_RULES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "doc-style-rules.json")
 
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*#*$")
-FENCE_RE = re.compile(r"^```{3,}")
+# 围栏：``` 或 ~~~ 起，允许最多 3 个前导空格（CommonMark）。
+# 注意别写成 r"^```{3,}" —— {3,} 只作用于紧邻的第 3 个反引号，那样实际要求 ≥5 个反引号，
+# 普通三反引号围栏会完全匹配不上，代码块剥离静默失效（本仓库曾踩此坑）。
+FENCE_RE = re.compile(r"^ {0,3}(`{3,}|~{3,})")
+INLINE_CODE_RE = re.compile(r"`[^`\n]*`")
+
+
+def iter_prose_lines(text):
+    """逐行产出 (行号, 原始行)，跳过围栏代码块内部与围栏行本身。
+
+    闭合规则按 CommonMark 简化：闭合围栏字符须与开启一致且长度不短于开启长度，
+    否则视为块内普通内容（保证嵌套示例里的 ``` 不会提前闭合外层 ````）。
+    """
+    fence_char, fence_len = None, 0
+    for i, line in enumerate(text.split("\n"), 1):
+        m = FENCE_RE.match(line)
+        if m:
+            marker = m.group(1)
+            ch, ln = marker[0], len(marker)
+            if fence_char is None:
+                fence_char, fence_len = ch, ln
+                continue
+            if ch == fence_char and ln >= fence_len:
+                fence_char, fence_len = None, 0
+                continue
+        if fence_char is not None:
+            continue
+        yield i, line
 
 
 def load_rules(path):
@@ -89,15 +123,9 @@ def scan_file(path, rules):
                 print(f"[样式] {path}: frontmatter 缺少必需键 '{req}'", file=sys.stderr)
                 problems += 1
 
-    # 标题层级
+    # 标题层级（围栏代码块内的 # 注释不算标题）
     headings = []
-    in_fence = False
-    for i, line in enumerate(text.split("\n"), 1):
-        if FENCE_RE.match(line):
-            in_fence = not in_fence
-            continue
-        if in_fence:
-            continue
+    for i, line in iter_prose_lines(text):
         m = HEADING_RE.match(line)
         if m:
             headings.append((len(m.group(1)), m.group(2).strip(), i))
@@ -125,13 +153,14 @@ def scan_file(path, rules):
             slugs[s] = ln
         prev = level
 
-    # 残留 token
+    # 残留 token（剥离围栏代码块与行内代码：示例/反例/「在讲这个 token」都不算残留）
     tokens = rules.get("missing_tokens", [])
     if tokens:
         token_re = re.compile("|".join(re.escape(t) for t in tokens))
-        for i, line in enumerate(text.split("\n"), 1):
-            if token_re.search(line):
-                hits = [t for t in tokens if t in line]
+        for i, line in iter_prose_lines(text):
+            prose = INLINE_CODE_RE.sub("", line)
+            if token_re.search(prose):
+                hits = [t for t in tokens if t in prose]
                 print(f"[残留] {path}:{i} -> {', '.join(hits)}", file=sys.stderr)
                 problems += 1
     return problems
