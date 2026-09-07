@@ -237,11 +237,11 @@ jobs:
 
 | 你要做的事 | 去 L3 子技能 | 本篇只负责 |
 |-----------|-------------|-----------|
-| 门禁过了之后转 Word/PPT/PDF | `skills/md-to-office/SKILL.md` | 只保证源结构合法 |
-| 把 Office 转成 MD 后再过门禁 | `skills/office-to-md/SKILL.md` | 只定义合法标准 |
-| 演示大纲通过后的设计执行 | `skills/presentation-designer/SKILL.md` | 只卡结构不管美观 |
-| 用 python-pptx 批改幻灯片 | `skills/ppt-automation/SKILL.md` | 不涉及 pptx 编程 |
-| 门禁规则里的品牌 / 模板项来源 | `skills/office-context/SKILL.md` | 不存储品牌状态 |
+| 门禁过了之后转 Word/PPT/PDF | [skills/md-to-office/SKILL.md](../skills/md-to-office/SKILL.md) | 只保证源结构合法 |
+| 把 Office 转成 MD 后再过门禁 | [skills/office-to-md/SKILL.md](../skills/office-to-md/SKILL.md) | 只定义合法标准 |
+| 演示大纲通过后的设计执行 | [skills/presentation-designer/SKILL.md](../skills/presentation-designer/SKILL.md) | 只卡结构不管美观 |
+| 用 python-pptx 批改幻灯片 | [skills/ppt-automation/SKILL.md](../skills/ppt-automation/SKILL.md) | 不涉及 pptx 编程 |
+| 门禁规则里的品牌 / 模板项来源 | [skills/office-context/SKILL.md](../skills/office-context/SKILL.md) | 不存储品牌状态 |
 
 同层 references（平级 L2，互不复制）：
 

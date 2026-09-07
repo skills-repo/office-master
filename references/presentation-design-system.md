@@ -183,11 +183,11 @@ python-pptx 落地时读这份 token 设颜色/字体，保证「改一处全篇
 
 | 你要做的事 | 去 L3 子技能 | 本篇只负责 |
 |-----------|-------------|-----------|
-| 具体的品牌风格套用与设计执行 | `skills/presentation-designer/SKILL.md` | 风格选型决策树与硬规则 |
-| python-pptx 创建 / 修改 / 提取幻灯片 | `skills/ppt-automation/SKILL.md` | 只给落地要点，不列 API 签名 |
-| 从 Markdown 生成 .pptx 的初始骨架 | `skills/md-to-office/SKILL.md` | 交接「结构已分页」 |
-| 从既有 .pptx 抽取文本做复用 | `skills/office-to-md/SKILL.md` | 不涉及抽取参数 |
-| 品牌五件套跨会话复用 | `skills/office-context/SKILL.md` | 不存储品牌状态 |
+| 具体的品牌风格套用与设计执行 | [skills/presentation-designer/SKILL.md](../skills/presentation-designer/SKILL.md) | 风格选型决策树与硬规则 |
+| python-pptx 创建 / 修改 / 提取幻灯片 | [skills/ppt-automation/SKILL.md](../skills/ppt-automation/SKILL.md) | 只给落地要点，不列 API 签名 |
+| 从 Markdown 生成 .pptx 的初始骨架 | [skills/md-to-office/SKILL.md](../skills/md-to-office/SKILL.md) | 交接「结构已分页」 |
+| 从既有 .pptx 抽取文本做复用 | [skills/office-to-md/SKILL.md](../skills/office-to-md/SKILL.md) | 不涉及抽取参数 |
+| 品牌五件套跨会话复用 | [skills/office-context/SKILL.md](../skills/office-context/SKILL.md) | 不存储品牌状态 |
 
 同层 references（平级 L2，互不复制）：
 

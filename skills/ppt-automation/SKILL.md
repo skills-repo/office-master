@@ -61,8 +61,8 @@ metadata:
 
 ## 相关参考（Playbook）
 
-- 版式选择矩阵、排版硬规则、python-pptx 落地要点与「基线版 vs 手调」约定 → `references/presentation-design-system.md`
-- 大纲结构先过门禁再编程生成 → `scripts/check_ppt_brief.py` + `references/doc-style-quality-gates.md`
+- 版式选择矩阵、排版硬规则、python-pptx 落地要点与「基线版 vs 手调」约定 → [references/presentation-design-system.md](../../references/presentation-design-system.md)
+- 大纲结构先过门禁再编程生成 → `scripts/check_ppt_brief.py` + [references/doc-style-quality-gates.md](../../references/doc-style-quality-gates.md)
 - 从 Markdown 生成初始骨架（先生成再编程改）→ `skills/md-to-office/SKILL.md`
 - 模板路径与品牌色板的跨会话复用 → `skills/office-context/SKILL.md`
 

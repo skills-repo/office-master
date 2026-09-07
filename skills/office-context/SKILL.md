@@ -32,7 +32,7 @@ metadata:
 
 ## 工作流
 
-1. 首次：与用户确认品牌五件套 + 模板路径，写入 `assets/office-context.json`（模板见 `references/office-context-playbook.md`）
+1. 首次：与用户确认品牌五件套 + 模板路径，写入 `assets/office-context.json`（模板见 [references/office-context-playbook.md](../../references/office-context-playbook.md)）
 2. 每次转换前：读取上下文 → 把品牌色 / 字体 / 模板传入 `md-to-office`（Pandoc `--reference-doc` / variables）或 `ppt-automation`（python-pptx 套色）
 3. 漂移检测：对比上下文与产出，发现色板 / 字体不一致即回查上下文是否过期
 4. 变更：品牌更新时只改 `office-context.json`，不动既有已生成文档
@@ -40,7 +40,7 @@ metadata:
 ## 与兄弟技能协作
 
 - 品牌 / 模板注入 → `skills/md-to-office`（Pandoc reference-doc）、`skills/ppt-automation`（python-pptx 模板）
-- 版式结构规范 → `references/doc-style-quality-gates.md` + `assets/doc-style-rules.json`
+- 版式结构规范 → [references/doc-style-quality-gates.md](../../references/doc-style-quality-gates.md) + `assets/doc-style-rules.json`
 - 演示骨架 → `assets/presentation-brief-template.md`
 
 ## 边界

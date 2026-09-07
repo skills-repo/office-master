@@ -183,11 +183,11 @@ pandoc product.md -o dist/product.docx --reference-doc=brand.docx
 
 | 你要做的事 | 去 L3 子技能 | 本篇只负责 |
 |-----------|-------------|-----------|
-| Office/PDF → Markdown 的实际调用 | `skills/office-to-md/SKILL.md` | 判断该不该转、失真预期 |
-| Markdown → Word/PPT/PDF 的实际调用 | `skills/md-to-office/SKILL.md` | 选模板策略、源真相方向 |
-| 转成 PPT 后的版式与品牌设计 | `skills/presentation-designer/SKILL.md` | 只交接「结构已就绪」 |
-| .pptx 的编程批量改写 | `skills/ppt-automation/SKILL.md` | 不涉及 python-pptx API |
-| 品牌 / 模板跨会话复用 | `skills/office-context/SKILL.md` | 不存储品牌状态 |
+| Office/PDF → Markdown 的实际调用 | [skills/office-to-md/SKILL.md](../skills/office-to-md/SKILL.md) | 判断该不该转、失真预期 |
+| Markdown → Word/PPT/PDF 的实际调用 | [skills/md-to-office/SKILL.md](../skills/md-to-office/SKILL.md) | 选模板策略、源真相方向 |
+| 转成 PPT 后的版式与品牌设计 | [skills/presentation-designer/SKILL.md](../skills/presentation-designer/SKILL.md) | 只交接「结构已就绪」 |
+| .pptx 的编程批量改写 | [skills/ppt-automation/SKILL.md](../skills/ppt-automation/SKILL.md) | 不涉及 python-pptx API |
+| 品牌 / 模板跨会话复用 | [skills/office-context/SKILL.md](../skills/office-context/SKILL.md) | 不存储品牌状态 |
 
 同层 references（平级 L2，互不复制）：
 
