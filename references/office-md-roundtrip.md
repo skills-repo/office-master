@@ -42,7 +42,7 @@ pandoc deck.md -o deck.pptx
 ## 3. 转换前检查清单
 
 - [ ] 确认「源真相」格式（Word 还是 MD），避免双向覆盖
-- [ ] MD 侧标题层级规范（用 `scripts/check_doc_style.py` 校验，见 `doc-style-rules.json`）
+- [ ] MD 侧标题层级规范（用 [scripts/check_doc_style.py](../scripts/check_doc_style.py) 校验，见 `doc-style-rules.json`）
 - [ ] 图片是否需单独导出（markitdown 不嵌入图片）
 - [ ] 表格是否复杂到需手工校（嵌套表常丢）
 - [ ] 是否需要参考模板（Word 用 `--reference-doc`）
@@ -149,9 +149,9 @@ pandoc product.md -o dist/product.docx --reference-doc=brand.docx
 当 MD 源要变成幻灯片时，走两条互补路径：
 
 - **快速分页**：`md-to-office` 的 Pandoc 路径，按 H1/H2 直接分页成 PPT——适合内部汇报、草稿。
-- **品牌级设计**：把 MD 整理成 brief（用 `assets/presentation-brief-template.md` 结构），交给 `presentation-designer` 套 5 套品牌风格，再用 `ppt-automation` 以 python-pptx 精确落地。
+- **品牌级设计**：把 MD 整理成 brief（用 [assets/presentation-brief-template.md](../assets/presentation-brief-template.md) 结构），交给 `presentation-designer` 套 5 套品牌风格，再用 `ppt-automation` 以 python-pptx 精确落地。
 
-> 衔接点：brief 的层级规范（单一 H1、H2 为页）正是 `scripts/check_doc_style.py` 与 `check_ppt_brief.py` 校验的对象。源 MD 规范 → 自动分页不出错 → 设计层只管美化。
+> 衔接点：brief 的层级规范（单一 H1、H2 为页）正是 [scripts/check_doc_style.py](../scripts/check_doc_style.py) 与 `check_ppt_brief.py` 校验的对象。源 MD 规范 → 自动分页不出错 → 设计层只管美化。
 
 ## 13. 格式映射速查
 
@@ -191,8 +191,8 @@ pandoc product.md -o dist/product.docx --reference-doc=brand.docx
 
 同层 references（平级 L2，互不复制）：
 
-- 转换前的结构门禁方法论 → `references/doc-style-quality-gates.md`（本篇第 3、9 节只引用其命令，规则演进见该篇）
-- 转成演示后的设计系统 → `references/presentation-design-system.md`（本篇第 12 节交接点的下游）
-- 品牌 / 模板上下文的落地约定 → `references/office-context-playbook.md`
+- 转换前的结构门禁方法论 → [references/doc-style-quality-gates.md](doc-style-quality-gates.md)（本篇第 3、9 节只引用其命令，规则演进见该篇）
+- 转成演示后的设计系统 → [references/presentation-design-system.md](presentation-design-system.md)（本篇第 12 节交接点的下游）
+- 品牌 / 模板上下文的落地约定 → [references/office-context-playbook.md](office-context-playbook.md)
 
 边界一句话：**本篇决定「转不转、往哪转」，L3 决定「怎么敲命令」，兄弟 L2 决定「转之前卡什么、转之后怎么设计」。**

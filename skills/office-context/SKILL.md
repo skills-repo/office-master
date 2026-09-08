@@ -20,7 +20,7 @@ metadata:
 ## 能力
 
 - 捕获品牌五件套：主色、辅色、强调色（均 HEX）、标题字体、正文字体、logo 路径
-- 登记模板与规范资产路径：`reference-doc.docx`、PPT 母版、本仓库 `assets/doc-style-rules.json`、演示 brief 模板
+- 登记模板与规范资产路径：`reference-doc.docx`、PPT 母版、本仓库 [assets/doc-style-rules.json](../../assets/doc-style-rules.json)、演示 brief 模板
 - 记录常用文档 / 演示骨架（月度报告、周报、提案）与固定章节顺序
 - 在 `md-to-office` / `ppt-automation` 调用前注入上下文，保证跨会话一致
 
@@ -39,9 +39,9 @@ metadata:
 
 ## 与兄弟技能协作
 
-- 品牌 / 模板注入 → `skills/md-to-office`（Pandoc reference-doc）、`skills/ppt-automation`（python-pptx 模板）
-- 版式结构规范 → [references/doc-style-quality-gates.md](../../references/doc-style-quality-gates.md) + `assets/doc-style-rules.json`
-- 演示骨架 → `assets/presentation-brief-template.md`
+- 品牌 / 模板注入 → [skills/md-to-office](../md-to-office/SKILL.md)（Pandoc reference-doc）、[skills/ppt-automation](../ppt-automation/SKILL.md)（python-pptx 模板）
+- 版式结构规范 → [references/doc-style-quality-gates.md](../../references/doc-style-quality-gates.md) + [assets/doc-style-rules.json](../../assets/doc-style-rules.json)
+- 演示骨架 → [assets/presentation-brief-template.md](../../assets/presentation-brief-template.md)
 
 ## 边界
 

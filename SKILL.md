@@ -31,21 +31,21 @@ metadata:
 
 | 任务 | 读取 / 调用 | 关键词（grep 线索） |
 |------|------------|---------------------|
-| Office↔Markdown 往返、工具选型、失真规避 | `references/office-md-roundtrip.md` | 格式转换 往返 markitdown pandoc 源真相 |
-| 演示设计系统、品牌风格选型、一致性验证 | `references/presentation-design-system.md` | 演示设计 品牌风格 版式 一致性 python-pptx |
-| 文档样式门禁方法论、规则卡控、CI 嵌入 | `references/doc-style-quality-gates.md` | 样式门禁 标题层级 阈值 规则文件 CI |
-| Office/PDF 转 Markdown（细粒度调用） | `skills/office-to-md/SKILL.md` | office-to-md markitdown Word Excel PDF |
-| Markdown 转 Office（细粒度调用） | `skills/md-to-office/SKILL.md` | md-to-office pandoc Word PPT PDF |
-| 专业演示设计（细粒度调用） | `skills/presentation-designer/SKILL.md` | presentation-designer 品牌 排版 动画 |
-| PPT 编程自动化（细粒度调用） | `skills/ppt-automation/SKILL.md` | ppt-automation python-pptx 幻灯片 模板 |
-| 办公品牌/模板上下文记忆、跨会话复用品牌色板与版式骨架 | `skills/office-context/SKILL.md` + `references/office-context-playbook.md` | 上下文 记忆 品牌 模板 office-context 偏好 复用 版式 |
+| Office↔Markdown 往返、工具选型、失真规避 | [references/office-md-roundtrip.md](references/office-md-roundtrip.md) | 格式转换 往返 markitdown pandoc 源真相 |
+| 演示设计系统、品牌风格选型、一致性验证 | [references/presentation-design-system.md](references/presentation-design-system.md) | 演示设计 品牌风格 版式 一致性 python-pptx |
+| 文档样式门禁方法论、规则卡控、CI 嵌入 | [references/doc-style-quality-gates.md](references/doc-style-quality-gates.md) | 样式门禁 标题层级 阈值 规则文件 CI |
+| Office/PDF 转 Markdown（细粒度调用） | [skills/office-to-md/SKILL.md](skills/office-to-md/SKILL.md) | office-to-md markitdown Word Excel PDF |
+| Markdown 转 Office（细粒度调用） | [skills/md-to-office/SKILL.md](skills/md-to-office/SKILL.md) | md-to-office pandoc Word PPT PDF |
+| 专业演示设计（细粒度调用） | [skills/presentation-designer/SKILL.md](skills/presentation-designer/SKILL.md) | presentation-designer 品牌 排版 动画 |
+| PPT 编程自动化（细粒度调用） | [skills/ppt-automation/SKILL.md](skills/ppt-automation/SKILL.md) | ppt-automation python-pptx 幻灯片 模板 |
+| 办公品牌/模板上下文记忆、跨会话复用品牌色板与版式骨架 | [skills/office-context/SKILL.md](skills/office-context/SKILL.md) + [references/office-context-playbook.md](references/office-context-playbook.md) | 上下文 记忆 品牌 模板 office-context 偏好 复用 版式 |
 
 ## 内置脚本（确定性、可重复执行）
 
 放在 `scripts/`，纯标准库、零依赖、只读、不联网，规则来自 `assets/`：
 
-- `scripts/check_doc_style.py` — 校验 Markdown 标题层级一致性（单一 H1、不跳级、重复 slug、frontmatter、残留 token）
-- `scripts/check_ppt_brief.py` — 校验演示大纲结构（页数、页标题长度、重复、正文长度）
+- [scripts/check_doc_style.py](scripts/check_doc_style.py) — 校验 Markdown 标题层级一致性（单一 H1、不跳级、重复 slug、frontmatter、残留 token）
+- [scripts/check_ppt_brief.py](scripts/check_ppt_brief.py) — 校验演示大纲结构（页数、页标题长度、重复、正文长度）
 
 两者均剥离围栏代码块：块内 `#` / `##` 是注释，不当标题、不当幻灯片页、不算残留 token。
 
@@ -59,15 +59,15 @@ python3 scripts/check_ppt_brief.py assets/presentation-brief-template.md   # 查
 
 > 作用域：只对**交付稿件**（要转 Word/PPT/PDF 的 .md）跑。别对含 `SKILL.md` 的技能仓库根
 > 递归跑——`SKILL.md` 用 `name`/`description`/`metadata`，没有 `title` 键，会刷出无关误报。
-> 判断依据与踩坑见 `references/doc-style-quality-gates.md` 第 3、6 节。
+> 判断依据与踩坑见 [references/doc-style-quality-gates.md](references/doc-style-quality-gates.md) 第 3、6 节。
 
 ## 模板资源
 
 `assets/` 提供可直接套用的规范与模板（被上述脚本读取执行、且自检 0 错误）：
 
-- `assets/doc-style-rules.json` — 样式/大纲检查规则（单一 H1、深度、必检 token、页数等）
-- `assets/presentation-brief-template.md` — 演示大纲标准模板（层级/结构均合规的范本）
-- `assets/office-context.example.json` — 办公上下文示例（品牌五件套 + 模板路径范本，复制改 `assets/office-context.json`）
+- [assets/doc-style-rules.json](assets/doc-style-rules.json) — 样式/大纲检查规则（单一 H1、深度、必检 token、页数等）
+- [assets/presentation-brief-template.md](assets/presentation-brief-template.md) — 演示大纲标准模板（层级/结构均合规的范本）
+- [assets/office-context.example.json](assets/office-context.example.json) — 办公上下文示例（品牌五件套 + 模板路径范本，复制改 `assets/office-context.json`）
 
 ## 核心原则（始终遵循）
 

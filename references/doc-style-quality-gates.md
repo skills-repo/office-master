@@ -1,6 +1,6 @@
 # 文档样式质量门禁方法论（office-master 增量方法论）
 
-> `scripts/check_doc_style.py` / `check_ppt_brief.py` 是机械执行层。本文档讲**为什么**要这些门禁、
+> [scripts/check_doc_style.py](../scripts/check_doc_style.py) / `check_ppt_brief.py` 是机械执行层。本文档讲**为什么**要这些门禁、
 > 哪些规则该卡、哪些不该卡、怎么把门禁嵌进写作流而不是事后补救。这是脚本装不下的判断方法论。
 
 ## 1. 决策树：这份文档要不要过样式门禁？
@@ -67,7 +67,7 @@ python3 scripts/check_doc_style.py docs/ product.md
 
 ## 5. 与规则文件的关系（单一事实来源）
 
-所有阈值都在 `assets/doc-style-rules.json`：
+所有阈值都在 [assets/doc-style-rules.json](../assets/doc-style-rules.json)：
 
 ```json
 {
@@ -245,10 +245,10 @@ jobs:
 
 同层 references（平级 L2，互不复制）：
 
-- 门禁在转换流水线中的位置 → `references/office-md-roundtrip.md`（其第 3、9 节调用本篇命令）
-- 演示侧的 brief 门禁与设计规则 → `references/presentation-design-system.md`（其第 9 节调用本篇命令）
-- 品牌 / 模板上下文与规则文件的关系 → `references/office-context-playbook.md`
+- 门禁在转换流水线中的位置 → [references/office-md-roundtrip.md](office-md-roundtrip.md)（其第 3、9 节调用本篇命令）
+- 演示侧的 brief 门禁与设计规则 → [references/presentation-design-system.md](presentation-design-system.md)（其第 9 节调用本篇命令）
+- 品牌 / 模板上下文与规则文件的关系 → [references/office-context-playbook.md](office-context-playbook.md)
 
-配套确定性工具：`scripts/check_doc_style.py` + `scripts/check_ppt_brief.py`，规则单一事实来源为 `assets/doc-style-rules.json`。
+配套确定性工具：[scripts/check_doc_style.py](../scripts/check_doc_style.py) + [scripts/check_ppt_brief.py](../scripts/check_ppt_brief.py)，规则单一事实来源为 [assets/doc-style-rules.json](../assets/doc-style-rules.json)。
 
 边界一句话：**本篇决定「卡什么、卡多严」，脚本负责机械执行，L3 负责门禁之后的产出动作。**

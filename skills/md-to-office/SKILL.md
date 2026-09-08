@@ -64,8 +64,8 @@ metadata:
 ## 相关参考（Playbook）
 
 - 源真相方向、模板策略、批量与目录级转换 → [references/office-md-roundtrip.md](../../references/office-md-roundtrip.md)
-- 转换前的结构门禁（先卡再转，省返工）→ [references/doc-style-quality-gates.md](../../references/doc-style-quality-gates.md) + `scripts/check_doc_style.py`
+- 转换前的结构门禁（先卡再转，省返工）→ [references/doc-style-quality-gates.md](../../references/doc-style-quality-gates.md) + [scripts/check_doc_style.py](../../scripts/check_doc_style.py)
 - 生成 .pptx 后的版式与品牌设计 → [references/presentation-design-system.md](../../references/presentation-design-system.md)
-- 品牌色板 / `--reference-doc` 模板的跨会话复用 → `skills/office-context/SKILL.md`
+- 品牌色板 / `--reference-doc` 模板的跨会话复用 → [skills/office-context/SKILL.md](../office-context/SKILL.md)
 
 > 本技能只负责**怎么转**（Pandoc 命令与参数）；转换方向、模板选择、门禁位置在上述 `references/` 中决策。

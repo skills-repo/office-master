@@ -35,7 +35,7 @@ brief 结构（H2 即一页）：
 ## 数据        -> 数据页
 ## 收尾        -> 标题页
 ```
-> 这份 brief 结构正是 `scripts/check_ppt_brief.py` 校验的对象：每页 H2、标题不超 60 字、正文不超 400 字、无重复页。
+> 这份 brief 结构正是 [scripts/check_ppt_brief.py](../scripts/check_ppt_brief.py) 校验的对象：每页 H2、标题不超 60 字、正文不超 400 字、无重复页。
 
 ## 3. 排版体系硬规则
 
@@ -191,10 +191,10 @@ python-pptx 落地时读这份 token 设颜色/字体，保证「改一处全篇
 
 同层 references（平级 L2，互不复制）：
 
-- 上游结构就绪与往返失真 → `references/office-md-roundtrip.md`（其第 12 节是本篇的入口）
-- brief / 大纲进 CI 的门禁方法论 → `references/doc-style-quality-gates.md`（本篇第 9 节只引用命令）
-- 品牌色板与模板路径的约定文件 → `references/office-context-playbook.md`
+- 上游结构就绪与往返失真 → [references/office-md-roundtrip.md](office-md-roundtrip.md)（其第 12 节是本篇的入口）
+- brief / 大纲进 CI 的门禁方法论 → [references/doc-style-quality-gates.md](doc-style-quality-gates.md)（本篇第 9 节只引用命令）
+- 品牌色板与模板路径的约定文件 → [references/office-context-playbook.md](office-context-playbook.md)
 
-配套确定性工具：`scripts/check_ppt_brief.py`（大纲结构）+ `assets/presentation-brief-template.md`（合规范本）。
+配套确定性工具：[scripts/check_ppt_brief.py](../scripts/check_ppt_brief.py)（大纲结构）+ [assets/presentation-brief-template.md](../assets/presentation-brief-template.md)（合规范本）。
 
 边界一句话：**本篇决定「长什么样、怎么验一致」，L3 决定「怎么把它做出来」。**

@@ -23,10 +23,10 @@
 
 | 技能 | 文件 | 用途 |
 |------|------|------|
-| office-to-md | `skills/office-to-md/SKILL.md` | Office 文档转 Markdown |
-| md-to-office | `skills/md-to-office/SKILL.md` | Markdown 转 Office 文档 |
-| presentation-designer | `skills/presentation-designer/SKILL.md` | 专业演示文稿设计 |
-| ppt-automation | `skills/ppt-automation/SKILL.md` | PowerPoint 自动化操作 |
+| office-to-md | [skills/office-to-md/SKILL.md](skills/office-to-md/SKILL.md) | Office 文档转 Markdown |
+| md-to-office | [skills/md-to-office/SKILL.md](skills/md-to-office/SKILL.md) | Markdown 转 Office 文档 |
+| presentation-designer | [skills/presentation-designer/SKILL.md](skills/presentation-designer/SKILL.md) | 专业演示文稿设计 |
+| ppt-automation | [skills/ppt-automation/SKILL.md](skills/ppt-automation/SKILL.md) | PowerPoint 自动化操作 |
 
 ## 适用场景
 
